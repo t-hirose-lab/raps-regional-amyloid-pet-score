@@ -46,43 +46,46 @@ raps-regional-amyloid-pet-score/
 ├── README.md
 ├── LICENSE
 ├── requirements.txt
-├── config.py                          # Pipeline configuration
-├── scripts/
-│   ├── raps_construction.py           # Nested 5×5 CV for RAPS construction
-│   ├── raps_supplementary_stats.py    # Supplementary table statistics
-│   └── generate_nifti.py              # NIfTI maps for MRIcroGL
-├── figures/
-│   └── make_fig*.py                   # Figure generation scripts
+├── apply_raps.py                      # Apply RAPS to new SUVR data
 ├── model/
 │   └── raps_7roi_final_model.joblib   # Trained 7-ROI model (ElasticNet + scaler)
 └── data/
+    ├── README.md
     ├── raps_roi_weights.csv           # Final 7-ROI coefficients
     └── bootstrap_roi_stability.csv    # Bootstrap stability (all 82 ROIs)
 ```
 
 ## Computing RAPS for a New Cohort
 
+The trained model expects 7 SUVRs per participant in this exact order:
+
+| Order | ROI |
+|---|---|
+| 1 | `LEFT_HIPPOCAMPUS_SUVR` |
+| 2 | `LEFT_AMYGDALA_SUVR` |
+| 3 | `CTX_LH_TRANSVERSETEMPORAL_SUVR` |
+| 4 | `CTX_RH_ENTORHINAL_SUVR` |
+| 5 | `CTX_LH_FUSIFORM_SUVR` |
+| 6 | `RIGHT_PALLIDUM_SUVR` |
+| 7 | `CTX_LH_LINGUAL_SUVR` |
+
+### Quick start (CLI)
+
+```bash
+python apply_raps.py input.csv output.csv
+```
+
+`input.csv` must contain the 7 columns above; `output.csv` will add a `RAPS` column (z-scored within the input cohort).
+
+### Programmatic use
+
 ```python
 import joblib
-import numpy as np
 
-# Load the trained model
-model = joblib.load('model/raps_7roi_final_model.joblib')
-enet     = model['enet']      # ElasticNet with 7-ROI coefficients
-scaler   = model['scaler']    # StandardScaler (ADNI-fitted)
-cov_model = model['cov_model'] # Covariate regression model
-roi_names = model['roi_names'] # 7-ROI name order
+bundle = joblib.load("model/raps_7roi_final_model.joblib")
+enet, scaler = bundle["enet"], bundle["scaler"]
 
-# For each participant, provide 7 ROI SUVRs in this exact order:
-#   ['LEFT_HIPPOCAMPUS_SUVR',
-#    'LEFT_AMYGDALA_SUVR',
-#    'CTX_LH_TRANSVERSETEMPORAL_SUVR',
-#    'CTX_RH_ENTORHINAL_SUVR',
-#    'CTX_LH_FUSIFORM_SUVR',
-#    'RIGHT_PALLIDUM_SUVR',
-#    'CTX_LH_LINGUAL_SUVR']
-
-# X_roi: (N, 7) array of SUVR values in the order above
+# X_roi: (N, 7) numpy array of SUVRs in the order above
 X_scaled = scaler.transform(X_roi)
 raps_raw = enet.predict(X_scaled)
 raps_z   = (raps_raw - raps_raw.mean()) / raps_raw.std()
