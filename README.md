@@ -4,7 +4,7 @@ Code and model weights for computing the Regional Amyloid PET Score (RAPS), a da
 
 ## Reference
 
-> Hirose T, Akamatsu W, Kato T, for the Alzheimer's Disease Neuroimaging Initiative. **A Data-Driven Regional Amyloid PET Score Predicts Cognitive Decline Beyond Centiloid: Multi-Cohort Multi-Tracer Validation.** *European Journal of Nuclear Medicine and Molecular Imaging* (under review).
+> Hirose T, Akamatsu W, Kato T, for the Alzheimer's Disease Neuroimaging Initiative. **A Data-Driven Regional Amyloid PET Score Predicts Cognitive Decline Beyond Centiloid: Multi-Cohort Multi-Tracer Validation.** *Journal of Alzheimer's Disease* (under review).
 
 ## What is RAPS?
 
@@ -106,10 +106,8 @@ raps_z   = (raps_raw - raps_raw.mean()) / raps_raw.std()
 
 - Python ≥ 3.10
 - scikit-learn ≥ 1.7
-- numpy, pandas, scipy, statsmodels
+- numpy, pandas, scipy, statsmodels, joblib
 - lifelines, scikit-survival (for survival analysis and IPCW time-dependent AUC)
-- matplotlib, seaborn (for figures)
-- nibabel, nilearn (for NIfTI generation)
 
 See `requirements.txt` for exact versions.
 
