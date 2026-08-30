@@ -119,7 +119,7 @@ See `requirements.txt` for exact versions.
 
 ## Version Notes
 
-- **v5 (current, 9-ROI)**: Rebuilt on the ADNI discovery cohort of N = 433 amyloid-positive (baseline Centiloid ≥ 20) CN/MCI participants for the EJNMMI submission. The 82-ROI ElasticNet + bootstrap pipeline (intersection of non-zero coefficients and bootstrap stability ≥ 80%) selected 9 ROIs. Relative to the prior 7-ROI version (v4), the left putamen was re-selected and the left accumbens was newly added, yielding the 9-ROI model. Validation was extended to four cohorts spanning four tracers: ADNI (N = 433), NACC SCAN (analytic N = 1,531), OASIS-3 (N = 428), and an ADNI [¹⁸F]florbetaben cross-tracer subset (N = 71).
+- **v5 (current, 9-ROI)**: Rebuilt on the ADNI discovery cohort of N = 433 amyloid-positive (baseline Centiloid ≥ 20) CN/MCI participants for the current manuscript. The 82-ROI ElasticNet + bootstrap pipeline (intersection of non-zero coefficients and bootstrap stability ≥ 80%) selected 9 ROIs. Relative to the prior 7-ROI version (v4), the left putamen was re-selected and the left accumbens was newly added, yielding the 9-ROI model. Validation was extended to four cohorts spanning four tracers: ADNI (N = 433), NACC SCAN (analytic N = 1,531), OASIS-3 (N = 428), and an ADNI [¹⁸F]florbetaben cross-tracer subset (N = 71).
 - **v4 (archived as `v4-7roi` tag, 7-ROI)**: Earlier model built on ADNI N = 515. 82-ROI ElasticNet pipeline with bootstrap stability ≥ 80% selecting 7 ROIs (putamen had been dropped after a caudate inclusion fix). Validated in ADNI (N = 515), OASIS-3 (N = 429), and an ADNI florbetaben subset (N = 72).
 - **v3 (archived as `v3-8roi` tag, 8-ROI)**: Earliest 80-ROI pipeline (caudate inadvertently excluded).
 
