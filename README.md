@@ -5,6 +5,8 @@ Code and model weights for computing the Regional Amyloid PET Score (RAPS), a da
 ## Reference
 
 > Hirose T, Akamatsu W, Kato T, for the Alzheimer's Disease Neuroimaging Initiative. **A Data-Driven Regional Amyloid PET Score Predicts Cognitive Decline Beyond Centiloid: Multi-Cohort Multi-Tracer Validation.** *Journal of Alzheimer's Disease* (under review).
+>
+> Preprint: medRxiv 2026.08.26.26360248. https://doi.org/10.64898/2026.08.26.26360248
 
 ## What is RAPS?
 
