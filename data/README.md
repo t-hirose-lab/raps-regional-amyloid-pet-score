@@ -1,12 +1,14 @@
 # Data files
 
+These files describe the original nine-region model development and are retained unchanged in the JAD revision. They are not outputs of the corrected-input sensitivity refits.
+
 ## raps_roi_weights.csv
 Final 9-ROI RAPS coefficients from ElasticNet refit on the ADNI discovery cohort
 (N = 433, alpha = 0.058, L1 ratio = 0.10).
 
 | Column | Description |
 |---|---|
-| `roi` | FreeSurfer Desikan-Killiany ROI name (UC Berkeley pipeline) |
+| `roi` | FreeSurfer cortical/subcortical ROI name (UC Berkeley pipeline) |
 | `coefficient` | ElasticNet coefficient (β) |
 | `abs_coefficient` | Absolute value of coefficient |
 | `rank` | Rank by absolute coefficient (1 = largest) |
@@ -28,7 +30,7 @@ Bootstrap stability assessment (1,000 iterations) for all 82 FreeSurfer ROIs.
 
 ## Note on ROI count (7 → 9)
 The final RAPS is defined as the intersection of non-zero ElasticNet coefficients and
-bootstrap selection frequency ≥ 80%. Rebuilding the pipeline on the EJNMMI discovery
+bootstrap selection frequency ≥ 80%. Applying the original pipeline to the discovery
 cohort of N = 433 amyloid-positive ADNI participants selected 9 ROIs. Relative to the
 prior 7-ROI version (built on ADNI N = 515), the left putamen was re-selected and the
 left accumbens was newly added. See the main README Version Notes.
